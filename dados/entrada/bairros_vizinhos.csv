@@ -1,0 +1,161 @@
+;NOME;NEIGHBORS
+0;Paquetá;
+1;Freguesia;Bancários
+2;Bancários;Freguesia, Tauá, Cocotá
+3;Galeão;Portuguesa, Jardim Guanabara, Cidade Universitária
+4;Tauá;Bancários, Moneró, Cocotá, Jardim Carioca
+5;Portuguesa;Galeão, Moneró, Jardim Carioca, Jardim Guanabara
+6;Moneró;Tauá, Portuguesa, Jardim Carioca
+7;Campo Grande;Bangu, Paciência, Santíssimo, Senador Camará, Senador Vasconcelos, Cosmos, Inhoaíba, Guaratiba, Vargem Grande, Jacarepaguá
+8;Vigário Geral;Jardim América, Parada De Lucas, Irajá
+9;Cocotá;Bancários, Tauá, Jardim Carioca, Praia Da Bandeira, Cacuia
+10;Jardim América;Vigário Geral, Pavuna, Parque Colúmbia, Irajá
+11;Jardim Carioca;Tauá, Portuguesa, Moneró, Cocotá, Jardim Guanabara, Cacuia
+12;Pavuna;Jardim América, Parque Colúmbia, Irajá, Anchieta, Costa Barros, Coelho Neto, Barros Filho
+13;Cordovil;Parada De Lucas, Penha Circular, Brás De Pina, Vista Alegre
+14;Jardim Guanabara;Galeão, Portuguesa, Jardim Carioca, Cacuia
+15;Parada De Lucas;Vigário Geral, Cordovil, Irajá, Vista Alegre
+16;Parque Colúmbia;Jardim América, Pavuna, Irajá, Acari, Coelho Neto
+17;Praia Da Bandeira;Cocotá, Cacuia, Pitangueiras
+18;Penha Circular;Cordovil, Brás De Pina, Penha, Olaria, Vila Da Penha, Vila Kosmos, Engenho Da Rainha
+19;Bangu;Campo Grande, Realengo, Padre Miguel, Santíssimo, Senador Camará, Gericinó
+20;Cacuia;Cocotá, Jardim Carioca, Jardim Guanabara, Praia Da Bandeira, Pitangueiras, Zumbi
+21;Irajá;Vigário Geral, Jardim América, Pavuna, Parada De Lucas, Parque Colúmbia, Acari, Brás De Pina, Coelho Neto, Vista Alegre, Colégio, Vila Da Penha, Rocha Miranda, Vicente De Carvalho, Vaz Lobo, Turiaçú
+22;Anchieta;Pavuna, Costa Barros, Guadalupe, Parque Anchieta, Ricardo De Albuquerque
+23;Acari;Parque Colúmbia, Irajá, Coelho Neto
+24;Pitangueiras;Praia Da Bandeira, Cacuia, Zumbi
+25;Costa Barros;Pavuna, Anchieta, Guadalupe, Barros Filho
+26;Brás De Pina;Cordovil, Penha Circular, Irajá, Vista Alegre, Vila Da Penha
+27;Penha;Penha Circular, Olaria, Maré, Engenho Da Rainha
+28;Zumbi;Cacuia, Pitangueiras, Ribeira
+29;Ribeira;Zumbi
+30;Coelho Neto;Pavuna, Parque Colúmbia, Irajá, Acari, Barros Filho, Colégio, Honório Gurgel, Rocha Miranda
+31;Guadalupe;Anchieta, Costa Barros, Barros Filho, Ricardo De Albuquerque, Honório Gurgel, Marechal Hermes, Deodoro
+32;Parque Anchieta;Anchieta, Ricardo De Albuquerque, Vila Militar, Realengo
+33;Barros Filho;Pavuna, Costa Barros, Coelho Neto, Guadalupe, Honório Gurgel, Marechal Hermes
+34;Vista Alegre;Cordovil, Parada De Lucas, Irajá, Brás De Pina
+35;Ricardo De Albuquerque;Anchieta, Guadalupe, Parque Anchieta, Vila Militar, Deodoro
+36;Colégio;Irajá, Coelho Neto, Rocha Miranda
+37;Honório Gurgel;Coelho Neto, Guadalupe, Barros Filho, Rocha Miranda, Marechal Hermes, Bento Ribeiro
+38;Olaria;Penha Circular, Penha, Maré, Ramos, Engenho Da Rainha, Complexo do Alemão
+39;Vila Da Penha;Penha Circular, Irajá, Brás De Pina, Vila Kosmos, Vicente De Carvalho
+40;Maré;Penha, Olaria, Ramos, Bonsucesso, Manguinhos, Caju
+41;Vila Militar;Parque Anchieta, Ricardo De Albuquerque, Realengo, Magalhães Bastos, Campo Dos Afonsos, Jardim Sulacap, Deodoro
+42;Cidade Universitária;Maré, Galeão
+43;Rocha Miranda;Irajá, Coelho Neto, Colégio, Honório Gurgel, Vaz Lobo, Bento Ribeiro, Turiaçú, Osvaldo Cruz
+44;Ramos;Olaria, Maré, Complexo do Alemão, Bonsucesso
+45;Realengo;Bangu, Parque Anchieta, Vila Militar, Padre Miguel, Magalhães Bastos, Senador Camará, Jardim Sulacap, Taquara, Jacarepaguá
+46;Vila Kosmos;Penha Circular, Vila Da Penha, Vicente De Carvalho, Engenho Da Rainha, Tomás Coelho
+47;Marechal Hermes;Guadalupe, Barros Filho, Honório Gurgel, Bento Ribeiro, Campo Dos Afonsos, Vila Valqueire, Deodoro
+48;Vicente De Carvalho;Irajá, Vila Da Penha, Vila Kosmos, Vaz Lobo, Tomás Coelho, Cavalcanti
+49;Paciência;Campo Grande, Santa Cruz, Cosmos
+50;Engenho Da Rainha;Penha Circular, Penha, Olaria, Vila Kosmos, Complexo do Alemão, Inhaúma, Tomás Coelho, Pilares
+51;Complexo do Alemão;Olaria, Ramos, Engenho Da Rainha, Bonsucesso, Inhaúma, Higienópolis
+52;Vaz Lobo;Irajá, Rocha Miranda, Vicente De Carvalho, Turiaçú, Madureira, Cavalcanti
+53;Padre Miguel;Bangu, Realengo
+54;Bento Ribeiro;Honório Gurgel, Rocha Miranda, Marechal Hermes, Osvaldo Cruz, Vila Valqueire, Campinho
+55;Turiaçú;Irajá, Rocha Miranda, Vaz Lobo, Madureira, Osvaldo Cruz
+56;Bonsucesso;Maré, Ramos, Complexo do Alemão, Higienópolis, Manguinhos
+57;Inhaúma;Engenho Da Rainha, Complexo do Alemão, Higienópolis, Pilares, Del Castilho, Cachambi, Engenho De Dentro
+58;Tomás Coelho;Vila Kosmos, Vicente De Carvalho, Engenho Da Rainha, Cavalcanti, Pilares, Piedade
+59;Santíssimo;Campo Grande, Bangu, Senador Camará, Senador Vasconcelos
+60;Madureira;Vaz Lobo, Turiaçú, Osvaldo Cruz, Cavalcanti, Engenheiro Leal, Cascadura, Campinho
+61;Osvaldo Cruz;Rocha Miranda, Bento Ribeiro, Turiaçú, Madureira, Campinho
+62;Santa Cruz;Paciência, Cosmos, Guaratiba, Sepetiba
+63;Magalhães Bastos;Vila Militar, Realengo
+64;Senador Camará;Campo Grande, Bangu, Realengo, Santíssimo, Senador Vasconcelos, Vargem Grande, Jacarepaguá
+65;Cavalcanti;Vicente De Carvalho, Vaz Lobo, Tomás Coelho, Madureira, Engenheiro Leal, Piedade, Cascadura, Quintino Bocaiúva
+66;Campo Dos Afonsos;Vila Militar, Marechal Hermes, Vila Valqueire, Jardim Sulacap, Deodoro
+67;Higienópolis;Complexo do Alemão, Bonsucesso, Inhaúma, Manguinhos, Del Castilho, Maria Da Graça
+68;Manguinhos;Maré, Bonsucesso, Higienópolis, Maria Da Graça, Jacarezinho, Benfica, Caju
+69;Engenheiro Leal;Madureira, Cavalcanti, Cascadura
+70;Pilares;Engenho Da Rainha, Inhaúma, Tomás Coelho, Piedade, Abolição, Engenho De Dentro
+71;Del Castilho;Inhaúma, Higienópolis, Maria Da Graça, Cachambi
+72;Piedade;Tomás Coelho, Cavalcanti, Pilares, Quintino Bocaiúva, Abolição, Encantado, Água Santa, Freguesia Jacarepaguá
+73;Cascadura;Madureira, Cavalcanti, Engenheiro Leal, Quintino Bocaiúva, Campinho, Praça Seca
+74;Vila Valqueire;Marechal Hermes, Bento Ribeiro, Campo Dos Afonsos, Jardim Sulacap, Campinho, Praça Seca, Tanque
+75;Maria Da Graça;Higienópolis, Manguinhos, Del Castilho, Jacarezinho, Cachambi
+76;Quintino Bocaiúva;Cavalcanti, Piedade, Cascadura, Praça Seca, Tanque, Água Santa, Freguesia Jacarepaguá
+77;Jardim Sulacap;Vila Militar, Realengo, Campo Dos Afonsos, Vila Valqueire, Tanque, Taquara
+78;Campinho;Bento Ribeiro, Madureira, Osvaldo Cruz, Cascadura, Vila Valqueire, Praça Seca
+79;Abolição;Pilares, Piedade, Engenho De Dentro, Encantado
+80;Senador Vasconcelos;Campo Grande, Santíssimo, Senador Camará
+81;Cosmos;Campo Grande, Paciência, Santa Cruz, Inhoaíba, Guaratiba
+82;Jacarezinho;Manguinhos, Maria Da Graça, Cachambi, Benfica, Jacaré, Rocha
+83;Cachambi;Inhaúma, Del Castilho, Maria Da Graça, Jacarezinho, Engenho De Dentro, Todos Os Santos, Jacaré, Méier, Engenho Novo
+84;Praça Seca;Cascadura, Vila Valqueire, Quintino Bocaiúva, Campinho, Tanque
+85;Benfica;Manguinhos, Jacarezinho, São Cristóvão, Vasco Da Gama, Rocha, São Francisco Xavier, Mangueira, Caju
+86;Engenho De Dentro;Inhaúma, Pilares, Abolição, Cachambi, Todos Os Santos, Encantado, Méier, Água Santa, Lins De Vasconcelos, Jacarepaguá
+87;São Cristóvão;Benfica, Vasco Da Gama, Santo Cristo, Mangueira, Praça Da Bandeira, Maracanã, Caju
+88;Vasco Da Gama;Benfica, São Cristóvão, Caju
+89;Inhoaíba;Campo Grande, Cosmos, Guaratiba
+90;Todos Os Santos;Cachambi, Engenho De Dentro, Méier
+91;Jacaré;Jacarezinho, Cachambi, Rocha, Sampaio, Riachuelo, Engenho Novo
+92;Encantado;Piedade, Abolição, Engenho De Dentro, Água Santa
+93;Rocha;Jacarezinho, Benfica, Jacaré, Riachuelo, São Francisco Xavier, Vila Isabel
+94;Méier;Cachambi, Engenho De Dentro, Todos Os Santos, Engenho Novo, Lins De Vasconcelos
+95;Gamboa;Santo Cristo, Centro, Saúde
+96;Santo Cristo;São Cristóvão, Gamboa, Centro, Cidade Nova, Praça Da Bandeira, Caju
+97;Centro;Gamboa, Santo Cristo, Saúde, Cidade Nova, Glória, Santa Teresa
+98;Sampaio;Jacaré, Riachuelo, Engenho Novo, Vila Isabel
+99;Riachuelo;Jacaré, Rocha, Sampaio, Vila Isabel
+100;Saúde;Gamboa, Centro
+101;São Francisco Xavier;Benfica, Rocha, Mangueira, Vila Isabel, Maracanã
+102;Engenho Novo;Cachambi, Jacaré, Méier, Sampaio, Lins De Vasconcelos, Vila Isabel, Grajaú
+103;Mangueira;Benfica, São Cristóvão, São Francisco Xavier, Maracanã
+104;Tanque;Vila Valqueire, Quintino Bocaiúva, Jardim Sulacap, Praça Seca, Taquara, Freguesia Jacarepaguá, Pechincha
+105;Taquara;Realengo, Jardim Sulacap, Tanque, Pechincha, Curicica, Cidade De Deus, Jacarepaguá
+106;Água Santa;Piedade, Quintino Bocaiúva, Engenho De Dentro, Encantado, Freguesia Jacarepaguá, Jacarepaguá
+107;Lins De Vasconcelos;Engenho De Dentro, Méier, Engenho Novo, Grajaú, Jacarepaguá
+108;Freguesia Jacarepaguá;Piedade, Quintino Bocaiúva, Tanque, Água Santa, Pechincha, Cidade De Deus, Anil, Jacarepaguá, Gardênia Azul
+109;Cidade Nova;Santo Cristo, Centro, Praça Da Bandeira, Santa Teresa, Estácio, Catumbi
+110;Praça Da Bandeira;São Cristóvão, Santo Cristo, Cidade Nova, Maracanã, Rio Comprido, Estácio, Tijuca
+111;Vila Isabel;Rocha, Sampaio, Riachuelo, São Francisco Xavier, Engenho Novo, Maracanã, Tijuca, Grajaú, Andaraí
+112;Maracanã;São Cristóvão, São Francisco Xavier, Mangueira, Praça Da Bandeira, Vila Isabel, Tijuca
+113;Glória;Centro, Santa Teresa, Catete, Flamengo
+114;Rio Comprido;Praça Da Bandeira, Santa Teresa, Estácio, Tijuca, Catumbi, Alto Da Boa Vista
+115;Santa Teresa;Centro, Cidade Nova, Glória, Rio Comprido, Catumbi, Catete, Laranjeiras, Alto Da Boa Vista, Cosme Velho, Botafogo, Humaitá
+116;Estácio;Cidade Nova, Praça Da Bandeira, Rio Comprido, Catumbi
+117;Tijuca;Praça Da Bandeira, Vila Isabel, Maracanã, Rio Comprido, Grajaú, Andaraí, Alto Da Boa Vista
+118;Catumbi;Cidade Nova, Rio Comprido, Santa Teresa, Estácio
+119;Grajaú;Engenho Novo, Lins De Vasconcelos, Vila Isabel, Tijuca, Andaraí, Alto Da Boa Vista, Jacarepaguá
+120;Pechincha;Tanque, Taquara, Freguesia Jacarepaguá, Cidade De Deus
+121;Andaraí;Vila Isabel, Tijuca, Grajaú
+122;Catete;Glória, Santa Teresa, Flamengo, Laranjeiras
+123;Flamengo;Glória, Catete, Laranjeiras, Botafogo
+124;Laranjeiras;Santa Teresa, Catete, Flamengo, Cosme Velho, Botafogo
+125;Guaratiba;Campo Grande, Santa Cruz, Cosmos, Inhoaíba, Vargem Grande, Sepetiba, Pedra De Guaratiba, Barra De Guaratiba
+126;Vargem Grande;Campo Grande, Senador Camará, Guaratiba, Jacarepaguá, Camorim, Vargem Pequena, Recreio Dos Bandeirantes, Barra De Guaratiba
+127;Alto Da Boa Vista;Rio Comprido, Santa Teresa, Tijuca, Grajaú, Jacarepaguá, Humaitá, Jardim Botânico, Itanhangá, Gávea, São Conrado
+128;Cosme Velho;Santa Teresa, Laranjeiras, Botafogo
+129;Curicica;Taquara, Jacarepaguá
+130;Botafogo;Santa Teresa, Flamengo, Laranjeiras, Cosme Velho, Urca, Humaitá, Copacabana, Leme, Lagoa
+131;Urca;Botafogo, Copacabana, Leme
+132;Cidade De Deus;Taquara, Freguesia Jacarepaguá, Pechincha, Jacarepaguá, Gardênia Azul
+133;Sepetiba;Santa Cruz, Guaratiba
+134;Anil;Freguesia Jacarepaguá, Jacarepaguá, Gardênia Azul
+135;Jacarepaguá;Campo Grande, Realengo, Senador Camará, Engenho De Dentro, Taquara, Água Santa, Lins De Vasconcelos, Freguesia Jacarepaguá, Grajaú, Vargem Grande, Alto Da Boa Vista, Curicica, Cidade De Deus, Anil, Camorim, Gardênia Azul, Itanhangá, Barra Da Tijuca
+136;Camorim;Vargem Grande, Jacarepaguá, Vargem Pequena, Barra Da Tijuca, Recreio Dos Bandeirantes
+137;Humaitá;Santa Teresa, Alto Da Boa Vista, Botafogo, Jardim Botânico, Copacabana, Lagoa
+138;Gardênia Azul;Freguesia Jacarepaguá, Cidade De Deus, Anil, Jacarepaguá
+139;Jardim Botânico;Alto Da Boa Vista, Humaitá, Lagoa, Gávea
+140;Vargem Pequena;Vargem Grande, Camorim, Recreio Dos Bandeirantes
+141;Copacabana;Botafogo, Urca, Humaitá, Leme, Lagoa, Ipanema
+142;Leme;Botafogo, Urca, Copacabana
+143;Lagoa;Botafogo, Humaitá, Jardim Botânico, Copacabana, Gávea, Leblon, Ipanema
+144;Itanhangá;Alto Da Boa Vista, Jacarepaguá, Barra Da Tijuca, São Conrado
+145;Gávea;Alto Da Boa Vista, Jardim Botânico, Lagoa, Leblon, São Conrado, Rocinha, Vidigal
+146;Barra Da Tijuca;Jacarepaguá, Camorim, Itanhangá, São Conrado, Recreio Dos Bandeirantes, Joá
+147;Leblon;Lagoa, Gávea, Ipanema, Vidigal
+148;Ipanema;Copacabana, Lagoa, Leblon
+149;São Conrado;Alto Da Boa Vista, Itanhangá, Gávea, Barra Da Tijuca, Rocinha, Vidigal, Joá
+150;Rocinha;Gávea, São Conrado, Vidigal
+151;Pedra De Guaratiba;Guaratiba
+152;Recreio Dos Bandeirantes;Vargem Grande, Camorim, Vargem Pequena, Barra Da Tijuca, Barra De Guaratiba, Grumari
+153;Vidigal;Gávea, Leblon, São Conrado, Rocinha
+154;Joá;Barra Da Tijuca, São Conrado
+155;Barra De Guaratiba;Guaratiba, Vargem Grande, Recreio Dos Bandeirantes, Grumari
+156;Grumari;Recreio Dos Bandeirantes, Barra De Guaratiba
+157;Caju;Maré, Manguinhos, Benfica, São Cristóvão, Vasco Da Gama, Santo Cristo
+158;Deodoro;Guadalupe, Ricardo De Albuquerque, Vila Militar, Marechal Hermes, Campo Dos Afonsos
+159;Gericinó;Bangu
