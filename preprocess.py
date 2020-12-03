@@ -134,8 +134,7 @@ def geo_discretizar(df,tipo_discretizacao,nx=None,ny=None):
             .str.split(' ',expand=True).astype(float)
         df['geometry'] = [Point((lat,lon)) for (lat,lon) in tqdm(df[['lat','lon']].values,desc='Formatando coordenadas geográficas')]
         df = gpd.GeoDataFrame(df).set_crs(epsg=4326)
-
-        df = gpd.sjoin(df,bairros,how='left',op='within')[list(df.columns)+['CODBAIRRO','NOME']]
+        df = gpd.sjoin(df,bairros,how='left',op='within')[list(df.columns)+['CODBAIRRO','NOME','area']]
         df.rename({'CODBAIRRO':'i','NOME':'nome_bairro'},axis=1,inplace=True)
         df['i'] = df['i'].fillna(0).astype(int)
     
