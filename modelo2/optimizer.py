@@ -45,7 +45,6 @@ class optimizer:
             # pegar distribuicao
             y = self.Y[bairro]
             b = self.beta[bairro]
-            x = self.X[bairro]
             l = self.lamb[bairro]
         
             left_loss = sum([l-yi*np.log(l) for yi in y])
@@ -55,7 +54,7 @@ class optimizer:
 
     def gera_lamb_inicial(self):
         for k in self.Y.keys():
-            self.beta[k] = 1e-6
+            self.beta[k] = 1e-2
         return self.beta,self.mu
 
     def max_likelihood_grad(self, lamb, beta, mu, X):
@@ -76,11 +75,11 @@ class optimizer:
             right_loss = self.alpha * sum([(b - beta[id_vizinho])**2 for id_vizinho in self.bairro_to_vizinhos[bairro]])
             self.loss[bairro] = left_loss + right_loss
             
-            left_side_beta = sum([x-x*yi/l for yi in y])
+            left_side_beta = sum([x*(1-yi/l) for yi in y])
             right_side_beta = 2 * self.alpha * sum([b - beta[id_vizinho] for id_vizinho in self.bairro_to_vizinhos[bairro]])
             grad_beta[bairro] = left_side_beta + right_side_beta
 
-            left_side_mu = sum([1-yi/l for yi in y])
+            left_side_mu = sum([1-(yi/l) for yi in y])
             grad_mu += left_side_mu
 
         return grad_beta,grad_mu

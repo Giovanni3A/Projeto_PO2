@@ -94,15 +94,15 @@ if __name__ == '__main__':
     for b in d_df['bairro'].unique():
         dists_df[b] = d_df[d_df['bairro']==b]['y'].values
 
-
     # dropar paquetá
     vizinhancas.drop(0,inplace=True)
     df = df[df['i']!=0]
 
-    # validação cruzada
-    losses = cross_validate(5)
-    losses.sort(key=lambda x:x[1])
-    alpha = losses[0][0]
+    # # validação cruzada
+    # losses = cross_validate(5)
+    # losses.sort(key=lambda x:x[1])
+    alpha = 1e3#losses[0][0]
+    alpha = int(alpha) if alpha >= 1 else alpha
     print('Melhor alpha:',alpha)
 
     # resultado final
