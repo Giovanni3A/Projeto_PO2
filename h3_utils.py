@@ -1,9 +1,9 @@
 from geopandas import GeoDataFrame
 import h3
-from shapely.geometry import Polygon
+from shapely.geometry import Polygon, Point
 
 
-def generateH3Discretization(gdf : GeoDataFrame, resolution : int = 7):
+def generateH3Discretization(gdf : GeoDataFrame, resolution : int = 7, ):
     
     '''
     Generate a hexagonal discretization of the area using Uber's H3 library, and returns a new GeoDataFrame with it. 
@@ -37,6 +37,12 @@ def generateH3Discretization(gdf : GeoDataFrame, resolution : int = 7):
     hex_indexes = list(h3.polyfill(geoJson, resolution)) #h3.polyfill is the important method in the H3 library that does the heavy work of finding a good hex-cover
 
     polygons = []
+    pol_areas = []
+    center_points = []
+    center_lat = []
+    center_lon = []
+    neighbors = []
+    c_neighbors = [[],[],[], [],[],[]]
     for hex in hex_indexes:
         #send a warning if there is a pentagon in the study region!
         if h3.h3_is_pentagon(hex):
@@ -50,9 +56,47 @@ def generateH3Discretization(gdf : GeoDataFrame, resolution : int = 7):
                 hex_coords_sh.append([coord[1], coord[0]]) #and in a differente (lat,long) order
         
         #do i need to loop back, to close the polygon?
+        
         pol = Polygon(hex_coords_sh)
         polygons.append(pol)
+        
+        pol_areas.append(h3.cell_area(hex)) #cell area in default km2
+        
+        lat_long_center = h3.h3_to_geo(hex)
+        center_point = (lat_long_center[0], lat_long_center[1])
+        center_points.append(center_point)
+        center_lat.append(lat_long_center[0])
+        center_lon.append(lat_long_center[1])
+
+        hex_ring = h3.hex_ring(hex, k = 1)
+        neighbors.append({neighbor for neighbor in hex_ring if neighbor in hex_indexes})
+        i_n = 0
+        i_filled = 0
+        for neighbor in hex_ring:
+            if neighbor in hex_indexes:
+                c_neighbors[i_filled].append(neighbor)
+                i_filled += 1
+            i_n += 1
+        assert i_n == 6, "Cell found that did not have 6 neighbors. Does the study area contain H3 pentagons? Check H3 official documentation for details"
+        while i_filled < i_n:
+            c_neighbors[i_filled].append(None)
+            i_filled += 1
+        
+
 
     #is there an other relevant info that could be calculated here?
-    temp_dict = {'geometry': polygons, 'h3_index':hex_indexes}
+    temp_dict = {'geometry': polygons, 'h3_index':hex_indexes, 'area': pol_areas}
+    
+    #io friendly format: adapt unsupported data types to multiple columns
+    
+    #temp_dict['center_point'] = center_points
+    temp_dict['center_lat'] = center_lat
+    temp_dict['center_lon'] = center_lon
+
+    #replaces neighbors set for 6 neighbors columns
+    #temp_dict['neighbors'] = neighbors
+    for i in range(6):
+        temp_dict['neighbor'+str(i)] = c_neighbors[i]
+
     return GeoDataFrame(temp_dict, crs="EPSG:4326") #crs="EPSG:4326" -> (lat, long) coordinates
+
