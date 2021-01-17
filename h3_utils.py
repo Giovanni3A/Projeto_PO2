@@ -1,6 +1,22 @@
 from geopandas import GeoDataFrame
 import h3
-from shapely.geometry import Polygon, Point
+from shapely.geometry import Polygon, Point, MultiPolygon
+
+#helper function: gets geojson like (H3 expects as input) from shapely polygon
+def polygonToGeoJson(polygon : Polygon):
+    temp_coord_list = list(polygon.exterior.coords)
+    #we have to manually convert from a list of list of tuples to a list of list of lists (and also invert lat, long ordering)
+    coords = []
+    for (long,lat) in temp_coord_list:
+        coords.append([lat,long])
+
+    #we dont want the loop around here
+    coords.pop()
+
+    geoJson = {'type': 'Polygon', 'coordinates': [coords] }
+    return geoJson
+
+
 
 
 def generateH3Discretization(gdf : GeoDataFrame, resolution : int = 7, ):
@@ -21,21 +37,26 @@ def generateH3Discretization(gdf : GeoDataFrame, resolution : int = 7, ):
 
     #maybe do some optional preprocessing to remove unreachable regions such as islands
 
-    convex_hull = gdf.geometry.convex_hull
-    temp_list = list(convex_hull[0].exterior.coords) #in the convex hull, there is only one polygon:
+    #convex_hull = gdf.geometry.convex_hull
+    #temp_list = list(convex_hull[0].exterior.coords) #in the convex hull, there is only one polygon:
 
-    #we have to manually convert from a list of list of tuples to a list of list of lists (and also invert lat, long ordering)
-    coords = []
-    for (long,lat) in temp_list:
-        coords.append([lat,long])
-
-    #we dont want the loop around here
-    coords.pop()
-
-    geoJson = {'type': 'Polygon', 'coordinates': [coords] }
-
-    hex_indexes = list(h3.polyfill(geoJson, resolution)) #h3.polyfill is the important method in the H3 library that does the heavy work of finding a good hex-cover
-
+    #loop through all observation in the geoseries. For every polygon there, compute using h3 the a list of h3 indexes and add it to the hex_indexes structure, used later to construct a new goodataframe
+    #this procedure "flattens" the original geoseries, ie, multipolygon's are treated as a sequence of polygon without differentiating them in any way
+    
+    hex_indexes = set()
+    for observation in gdf.geometry:
+        if observation.geom_type == "MultiPolygon":
+            for polygon in observation:
+                geoJson = polygonToGeoJson(polygon)
+                hex_indexes.update(h3.polyfill(geoJson, resolution)) #h3.polyfill is the important method in the H3 library that does the heavy work of finding a good hex-cover
+        elif observation.geom_type == "Polygon":
+            geoJson = polygonToGeoJson(observation)
+            hex_indexes.update(h3.polyfill(geoJson, resolution))
+        else:
+            raise ValueError("GeoDataFrame's geometry is limited to either polygon of multi-polygon. Got {}".format(observation.geom_type))
+    
+    #we have the H3 indexes in hex_indexes. Now we just need to transform them into an geodataframe with any relevant info we may need
+    hex_indexes = list(hex_indexes)
     polygons = []
     pol_areas = []
     center_points = []
