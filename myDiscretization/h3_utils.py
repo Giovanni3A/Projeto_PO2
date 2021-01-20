@@ -3,7 +3,7 @@ import h3
 from shapely.geometry import Polygon, Point, MultiPolygon
 
 #helper function: gets geojson like (H3 expects as input) from shapely polygon
-def polygonToGeoJson(polygon : Polygon):
+def polygon_to_geojson(polygon : Polygon):
     temp_coord_list = list(polygon.exterior.coords)
     #we have to manually convert from a list of list of tuples to a list of list of lists (and also invert lat, long ordering)
     coords = []
@@ -19,7 +19,7 @@ def polygonToGeoJson(polygon : Polygon):
 
 
 
-def generateH3Discretization(gdf : GeoDataFrame, resolution : int = 7, ):
+def generate_H3_discretization(gdf : GeoDataFrame, resolution : int = 7, ):
     
     '''
     Generate a hexagonal discretization of the area using Uber's H3 library, and returns a new GeoDataFrame with it. 
@@ -47,10 +47,10 @@ def generateH3Discretization(gdf : GeoDataFrame, resolution : int = 7, ):
     for observation in gdf.geometry:
         if observation.geom_type == "MultiPolygon":
             for polygon in observation:
-                geoJson = polygonToGeoJson(polygon)
+                geoJson = polygon_to_geojson(polygon)
                 hex_indexes.update(h3.polyfill(geoJson, resolution)) #h3.polyfill is the important method in the H3 library that does the heavy work of finding a good hex-cover
         elif observation.geom_type == "Polygon":
-            geoJson = polygonToGeoJson(observation)
+            geoJson = polygon_to_geojson(observation)
             hex_indexes.update(h3.polyfill(geoJson, resolution))
         else:
             raise ValueError("GeoDataFrame's geometry is limited to either polygon of multi-polygon. Got {}".format(observation.geom_type))
