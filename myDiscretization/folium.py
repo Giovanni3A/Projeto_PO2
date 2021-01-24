@@ -2,7 +2,7 @@ from geopandas import GeoDataFrame
 import folium
 import h3
 
-def visualize(gdf : GeoDataFrame):
+def visualize_h3(gdf : GeoDataFrame):
     '''
     Visualize gdf's region using folium. 
 
@@ -11,17 +11,16 @@ def visualize(gdf : GeoDataFrame):
 
         return           : a folium map
     '''
-    hexagons = []
-    for index in range(len(gdf)):
-        for i in range(5, 5+6):
-            if gdf.iloc[index, i] != None:
-                hexagons.append(gdf.iloc[index, i])
-                
-    m = _visualize_hexagons(hexagons, color = 'red')
+    hexagons = gdf['h3_index']
+    #for index in range(len(gdf)):
+    #    for i in range(5, 5+6):
+    #        if gdf.iloc[index, i] != None:
+    #            hexagons.append(gdf.iloc[index, i])
+    m = visualize_hexagons(hexagons, color = 'red')
     return m
     
 
-def visualize_index(gdf : GeoDataFrame, index : int):
+def visualize_h3_index(gdf : GeoDataFrame, index : int):
     '''
     Visualize only the hexagon given by index in a given gdf region, using folium. 
 
@@ -37,14 +36,14 @@ def visualize_index(gdf : GeoDataFrame, index : int):
         if gdf.iloc[index, i] != None:
             neighbors.append(gdf.iloc[index, i])
 
-    m = _visualize_hexagons(neighbors, color = 'blue')
-    m = _visualize_hexagons([gdf['h3_index'][index]], color = 'red', folium_map = m)
+    m = visualize_hexagons(neighbors, color = 'blue')
+    m = visualize_hexagons([gdf['h3_index'][index]], color = 'red', folium_map = m)
     return m
 
 
 
 
-def _visualize_hexagons(hexagons, color="red", folium_map=None):
+def visualize_hexagons(hexagons, color="red", folium_map=None):
     """
     hexagons is a list of hexcluster. Each hexcluster is a list of hexagons. 
     eg. [[hex1, hex2], [hex3, hex4]]
@@ -71,7 +70,7 @@ def _visualize_hexagons(hexagons, color="red", folium_map=None):
     return m
     
 
-def _visualize_polygon(polyline, color):
+def visualize_polygon(polyline, color):
     polyline.append(polyline[0])
     lat = [p[0] for p in polyline]
     lng = [p[1] for p in polyline]

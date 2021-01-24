@@ -20,9 +20,6 @@ def set_graphhopper_key(key : str):
 def set_googlemaps_key(key : str):
 	GG_KEY = key
 
-
-
-
 def distance_matrix_to_file(times, name):
 	'''
 		Write the calculated travel times into the file name

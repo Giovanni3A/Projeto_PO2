@@ -19,7 +19,7 @@ def polygon_to_geojson(polygon : Polygon):
 
 
 
-def generate_H3_discretization(gdf : GeoDataFrame, resolution : int = 7, ):
+def generate_H3_discretization(gdf : GeoDataFrame, resolution : int = 7):
     
     '''
     Generate a hexagonal discretization of the area using Uber's H3 library, and returns a new GeoDataFrame with it. 
@@ -59,10 +59,8 @@ def generate_H3_discretization(gdf : GeoDataFrame, resolution : int = 7, ):
     hex_indexes = list(hex_indexes)
     polygons = []
     pol_areas = []
-    center_points = []
-    center_lat = []
-    center_lon = []
     neighbors = []
+    center_points = []
     c_neighbors = [[],[],[], [],[],[]]
     for hex in hex_indexes:
         #send a warning if there is a pentagon in the study region!
@@ -74,23 +72,19 @@ def generate_H3_discretization(gdf : GeoDataFrame, resolution : int = 7, ):
         hex_coords_sh = []
         for coords in hex_coords_h3[0]:
             for coord in coords:
-                hex_coords_sh.append([coord[1], coord[0]]) #and in a differente (lat,long) order
-        
-        #do i need to loop back, to close the polygon?
+                hex_coords_sh.append([coord[1], coord[0]]) #and in a different (lat,long) order
         
         pol = Polygon(hex_coords_sh)
         polygons.append(pol)
         
         pol_areas.append(h3.cell_area(hex)) #cell area in default km2
         
+        #collects h3 center points. There might be a very slight difference between these points and the ones calculated by shapely based on the polygons!
         lat_long_center = h3.h3_to_geo(hex)
-        center_point = (lat_long_center[0], lat_long_center[1])
-        center_points.append(center_point)
-        center_lat.append(lat_long_center[0])
-        center_lon.append(lat_long_center[1])
+        center_points.append(Point(lat_long_center[1], lat_long_center[0]))
 
         hex_ring = h3.hex_ring(hex, k = 1)
-        neighbors.append({neighbor for neighbor in hex_ring if neighbor in hex_indexes})
+        neighbors.append({hex_indexes.index(neighbor) for neighbor in hex_ring if neighbor in hex_indexes})
         i_n = 0
         i_filled = 0
         for neighbor in hex_ring:
@@ -106,18 +100,14 @@ def generate_H3_discretization(gdf : GeoDataFrame, resolution : int = 7, ):
 
 
     #is there an other relevant info that could be calculated here?
-    temp_dict = {'geometry': polygons, 'h3_index':hex_indexes, 'area': pol_areas}
+    temp_dict = {'geometry': polygons, 'h3_index':hex_indexes, 'area': pol_areas, 'neighbors': neighbors}
     
-    #io friendly format: adapt unsupported data types to multiple columns
-    
-    #temp_dict['center_point'] = center_points
-    temp_dict['center_lat'] = center_lat
-    temp_dict['center_lon'] = center_lon
 
     #replaces neighbors set for 6 neighbors columns
     #temp_dict['neighbors'] = neighbors
-    for i in range(6):
-        temp_dict['neighbor'+str(i)] = c_neighbors[i]
+    #for i in range(6):
+    #    temp_dict['neighbor'+str(i)] = c_neighbors[i]
 
+    from .interface import to_export_friendly
     return GeoDataFrame(temp_dict, crs="EPSG:4326") #crs="EPSG:4326" -> (lat, long) coordinates
 
