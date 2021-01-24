@@ -10,26 +10,7 @@ import urllib.parse
 from itertools import tee
 from geopandas import GeoDataFrame
 
-
-GH_KEY = "YOUR_GRAPHHOPPER_API_KEY"
-GG_KEY = "YOUR_GOOGLEMAPS_API_KEY"
-
-def set_graphhopper_key(key : str):
-	GH_KEY = key
-
-def set_googlemaps_key(key : str):
-	GG_KEY = key
-
-def distance_matrix_to_file(times, name):
-	'''
-		Write the calculated travel times into the file name
-	'''
-	n = len(times)
-	arq = open(name,"w")
-	for i in range(n):
-		for j in range(n):
-			arq.write("%d %d %d\n" % (i,j,times[i][j]))
-	arq.close()
+from config import GH_KEY, GG_KEY
 	
 def _debug(times_gg, times_gh):
 	if times_gg:
@@ -45,9 +26,6 @@ def _debug(times_gg, times_gh):
 			print(i, times_gh[i])
 			print(end="\n")
 
-
-def distance_matrix_from_file():
-	raise NotImplementedError()
 
 # the only argument of this script is the path of the file containing a list of lat longs
 def main():

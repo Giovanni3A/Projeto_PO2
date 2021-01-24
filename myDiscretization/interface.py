@@ -8,7 +8,7 @@ from .travel_times.graphhopper import distance_matrix_from_gdf
 This file defines functions for ease of use, redirecting to the correct implementation in other files
 '''
 
-def generate_discretization(gdf, shape = 'hexagons', h3_discretization_level = 6, calculate_distance_matrix = False, export_friendly = False):
+def generate_discretization(gdf, shape = 'hexagons', h3_discretization_level = 6, export_friendly = False):
     '''
     Generate an enriched, discretized GeoDataFrame from the original geodataframe. The GeoDataFrame returned should work seamlessly with
         other functions provided within this module.
@@ -17,7 +17,6 @@ def generate_discretization(gdf, shape = 'hexagons', h3_discretization_level = 6
         gdf : (string, GeoDataFrame) - a path to a GeoDataFrame or a GeoDataFrame object
         shape : ('rectangles', 'hexagons', 'none', False) - the shape in which the space should be discretized. If 'none' or False, no discretization is done
         h3_discretization_level - if using 'hexagons', this sets the resolution level passed to the H3 library. A bigger number means smaller hexagons. Valid range [0,15]
-        calculate_distance_matrix : (bool) - whether we should calculate and return a distance matrix for the cells. If True, this will spend credits on Graphhopper
         export_friendly : (bool) - if True, the returned geodataframe is transformed to contain only columns that can be easily exported
     '''
     if(isinstance(gdf, str)):
@@ -55,13 +54,8 @@ def generate_discretization(gdf, shape = 'hexagons', h3_discretization_level = 6
     col = ['geometry', 'area', 'center_lat', 'center_lon', 'neighbors']
     col = col + [c for c in discretized_gdf.columns if c not in col] # but don't drop any
     discretized_gdf = discretized_gdf.reindex(columns=col)
-
-
-    distance_matrix = None
-    if calculate_distance_matrix:
-        distance_matrix = distance_matrix_from_gdf(discretized_gdf)
     
-    return discretized_gdf, distance_matrix
+    return discretized_gdf
 
 
 def to_export_friendly(gdf : GeoDataFrame):

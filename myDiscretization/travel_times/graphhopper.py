@@ -5,9 +5,14 @@ import urllib.parse
 from itertools import tee
 from geopandas import GeoDataFrame
 
-from .travel_times import GH_KEY
+GH_KEY = "NOT SET"
 
-base_url_gh="https://graphhopper.com/api/1/matrix?key={0}".format(GH_KEY)
+def set_graphhopper_key(key):
+	global GH_KEY
+	GH_KEY = key
+
+def base_url_gh(key):
+	return "https://graphhopper.com/api/1/matrix?key={0}".format(key)
 
 def make_req_gh(from_,to_):
 	post_data = {}
@@ -18,7 +23,9 @@ def make_req_gh(from_,to_):
 
 	post_headers = {"Content-Type" : "application/json"}
 
-	r = requests.post(base_url_gh, data=json.dumps(post_data), headers=post_headers)
+	global GH_KEY
+
+	r = requests.post(base_url_gh(GH_KEY), data=json.dumps(post_data), headers=post_headers)
 	response_data = r.json()
 	times = response_data["times"]
 	return times
