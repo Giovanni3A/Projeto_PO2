@@ -8,3 +8,5 @@ from .travel_times import graphhopper
 
 #from .travel_times.travel_times import set_graphhopper_key, set_googlemaps_key
 from .travel_times.graphhopper import distance_matrix_from_gdf, gen_distance_matrix, gen_distance_matrix_from_file
+
+from .add_regressors import addRegressorUniformDistribution,addRegressorWeithedAverage
